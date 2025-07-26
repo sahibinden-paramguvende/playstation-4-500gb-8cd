@@ -8,7 +8,8 @@
 </head>
 <body>
     <div class="header">
-        <span>Ürün bilgileri</span>
+        <img src="./attached_assets/8h5aqf4_1753546974955.jpg" alt="Sahibinden Logo" class="logo">
+        <span class="header-title">Ürün bilgileri</span>
         <div class="close-btn">×</div>
     </div>
     <div class="content" id="product-page">
@@ -156,7 +157,7 @@
                 confirmation.className = 'confirmation';
                 confirmation.textContent = 'Ödemeniz onaylandıktan sonra sms ile bilgilendirme yapılacaktır';
                 document.getElementById('payment-page').appendChild(confirmation);
-                
+
                 setTimeout(() => {
                     confirmation.classList.add('fade-out');
                     setTimeout(() => confirmation.remove(), 300);
